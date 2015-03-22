@@ -1,5 +1,9 @@
-# my little reminder for some aspects of the lattice charts
+# my little reminder...
+***
+# ...for some tricky aspects (for myself!) about the tweaking of lattice charts in R
+***
 
+### generate a fake data frame to paly with
 ```{r}
 df1<-data.frame(l=rep(letters[1:10],2), 
                v1=abs(rnorm(20))*10, 
@@ -7,7 +11,7 @@ df1<-data.frame(l=rep(letters[1:10],2),
 df1
 ```
 
-### plain bare bone chart
+### plain (bare bone) chart
 ```{r}
 require(lattice)
 xyplot(v1~l|f, data=df1)
@@ -18,11 +22,10 @@ xyplot(v1~l|f, data=df1)
 xyplot(v1~l, groups=f, data=df1)
 ```
 
-### failed attempt to align the grid lines with x labels
-#### to note panel.grid() is not working properly (but just sometime!)
+### a failed attempt to align the grid lines with all x labels
+NB: to note panel.grid() is not working properly (but just sometime!)
 
 ```{r}
-
 xyplot(v1~l, groups=f, data=df1,
                  
        panel=function(...){
@@ -32,9 +35,9 @@ xyplot(v1~l, groups=f, data=df1,
          panel.xyplot(...)
        }
        
-       )
-       
+       )       
 ```
+
 ### tweak the alignment of grid lines with x labels by using panel.abline()
 
 ```{r}
@@ -51,6 +54,7 @@ xyplot(v1~l, groups=f, data=df1,
 ```
 
 ### further chart customization 
+
 - color and size of points (see par.settings and simpleTheme)
 - x axis labels (see scale, capital letters now)
 - legend (see auto.key)
@@ -68,23 +72,26 @@ xyplot(v1~l, groups=f, data=df1,
          panel.abline(v=1:10,col = "grey", lwd = 1, lty = 2)
          panel.xyplot(...)
        }
-       
        )
-
 ```
+
 ### dealing with dates on the x axis
 
 #### define a new dataframe
+
 ```{r}
 df2 <- data.frame(date = seq(as.Date("2014/01/01"), as.Date("2014/01/31"), by="day"),
                   v1 = runif(31)*10)
 ```
 
 #### x labels as default
+
 ```{r}
 xyplot(v1 ~ date, data = df2)
 ```
+
 #### one label for each original timestamp and aligned grid line
+
 ```{r}
 mydate<-df2$date
 xyplot(v1 ~ date, data = df2,

@@ -1,0 +1,3 @@
+# my little reminder...
+***
+# ...for some tricky aspects (for myself!) about the tweaking of lattice charts in R
