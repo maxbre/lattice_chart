@@ -1,6 +1,6 @@
 # my little reminder...
 ***
-# ...for some tricky aspects (for myself!) about the tweaking of lattice charts in R
+# ...about some tricky aspects (for myself!) of the lattice charts tweaking in R
 ***
 
 ### generate a fake data frame to paly with
@@ -79,20 +79,20 @@ xyplot(v1~l, groups=f, data=df1,
 
 ### dealing with dates on the x axis
 
-#### define a new dataframe
+define a new dataframe
 
 ```{r}
 df2 <- data.frame(date = seq(as.Date("2014/01/01"), as.Date("2014/01/31"), by="day"),
                   v1 = runif(31)*10)
 ```
 
-#### x labels as default
+x labels as default
 
 ```{r}
 xyplot(v1 ~ date, data = df2)
 ```
 
-#### one label for each original timestamp and aligned grid line
+one label for each original timestamp and aligned grid line
 
 ```{r}
 mydate<-df2$date
@@ -107,7 +107,7 @@ xyplot(v1 ~ date, data = df2,
        )
 ```
 
-#### customized coarser labels and aligned grid line
+customized coarser labels and aligned grid line
 
 ```{r}
 nlab <- 6 # choose number of labels
